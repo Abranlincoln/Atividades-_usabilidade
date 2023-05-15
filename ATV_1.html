@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora</title>
+    <style>
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #7c7b7b;
+        }
+        .calculadora {
+            width: 300px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #000000;
+            margin: 0;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .display {
+            background-color: #b6afaf;
+            padding: 10px;
+        }
+
+        .display input {
+            width: 100%;
+            border: none;
+            font-size: 28px;
+            text-align: right;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            padding: 10px;
+        }
+
+        .buttons button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .buttons button.operador {
+            background-color: #ff9800;
+        }
+
+        .buttons button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculadora</h1>
+    <div class="calculadora">
+        <div class="display">
+            <input type="text" id="input">
+        </div>
+        <div class="buttons">
+            <button class="operador" onclick="appendToInput('/')">÷</button>
+            <button class="operador" onclick="appendToInput('*')">×</button>
+            <button class="operador" onclick="appendToInput('-')">−</button>
+            <button class="operador" onclick="appendToInput('+')">+</button>
+            <button onclick="clearInput()">C</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        var input = document.getElementById("input");
+        var historico = document.getElementById("historico");
+        var valores = [];
+
+        function appendToInput(char) {
+            input.value += char;
+        }
+
+        function clearInput() {
+            input.value = "";
+        }
+
+        function calculate() {
+            var expressao = input.value;
+            var result = eval(expressao);
+            input.value = result;
+        }
+
+    </script>
+    <footer>   
+        <p>Desenvolvido por: abranlincoln Gomes de brito</p>
+    </footer>
+</body>
+
+</html>
