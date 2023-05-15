@@ -10,7 +10,7 @@
             bottom: 0;
             width: 100%;
             background-color: #333;
-            color: white;
+            color: rgb(228, 228, 228);
             text-align: center;
             font-style: italic;
         }
@@ -68,8 +68,12 @@
             cursor: pointer;
         }
 
+        .buttons button.limparInput {
+            background-color: #ffc400;
+        }
+
         .buttons button.operador {
-            background-color: #ff9800;
+            background-color: #00ff4c;
         }
 
         .buttons button:hover {
@@ -85,12 +89,12 @@
             <input type="text" id="input">
         </div>
         <div class="buttons">
-            <button class="operador" onclick="appendToInput('/')">÷</button>
-            <button class="operador" onclick="appendToInput('*')">×</button>
-            <button class="operador" onclick="appendToInput('-')">−</button>
-            <button class="operador" onclick="appendToInput('+')">+</button>
-            <button onclick="clearInput()">C</button>
-            <button onclick="calculate()">=</button>
+            <button class="operador" onclick="anexarInput('/')">÷</button>
+            <button class="operador" onclick="anexarInput('*')">×</button>
+            <button class="operador" onclick="anexarInput('-')">−</button>
+            <button class="operador" onclick="anexarInput('+')">+</button>
+            <button class="limparInput" onclick="limparInput()">C</button>
+            <button onclick="calcular()">=</button>
         </div>
     </div>
 
@@ -98,18 +102,18 @@
         var input = document.getElementById("input");
         var valores = [];
 
-        function appendToInput(char) {
-            input.value += char;
-        }
-
-        function clearInput() {
-            input.value = "";
-        }
-
-        function calculate() {
+        function calcular() {
             var expressao = input.value;
             var result = eval(expressao);
             input.value = result;
+        }
+
+        function anexarInput(char) {
+            input.value += char;
+        }
+
+        function limparInput() {
+            input.value = "";
         }
 
     </script>
