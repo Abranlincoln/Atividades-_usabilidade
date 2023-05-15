@@ -99,13 +99,20 @@
     </div>
 
     <script>
+        function somenteNumeros(input) {
+            if (!/^[0-9]+$/.test(input.value)) {
+                alert("Digite apenas números!");
+                limparInput();
+            }
+        }
         var input = document.getElementById("input");
         var valores = [];
 
         function calcular() {
+            somenteNumeros(input);
             var expressao = input.value;
-            var result = eval(expressao);
-            input.value = result;
+            var resultado = eval(expressao);
+            input.value = resultado;
         }
 
         function anexarInput(char) {
