@@ -8,6 +8,25 @@
             background-color: #7c7b7b;
         }
 
+        .history {
+            background-color: #727272;
+            padding: 10px;
+            text-align: right;
+            font-size: 14px;
+            border-top: 2px solid #333;
+        }
+
+        .history ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: #727272;
+        }
+        #history-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
         .calculadora {
             width: 300px;
             margin: 20px auto;
@@ -83,7 +102,12 @@
 
 <body>
     <h1>Calculadora</h1>
+
     <div class="calculadora">
+        <div class="history">
+            <span id="history-label">Histórico:</span>
+            <ul id="history"></ul>
+        </div>
         <div class="display">
             <input type="text" id="input" onkeypress="apenasNumeros(event)">
         </div>
@@ -100,17 +124,20 @@
 
     <script>
         var input = document.getElementById("input");
-        var valores = [];
+        var listaHistorico = document.getElementById("history");
+        var itensHistorico = [];
 
         function calcular() {
             var expressao = input.value;
             var resultado = eval(expressao);
             input.value = resultado;
+            atualizarHistorico(expressao, resultado);
         }
 
         function anexarInput(char) {
             input.value += char;
         }
+
 
         function limparInput() {
             input.value = "";
@@ -123,7 +150,11 @@
                 alert(" Ainda não aprendemos a calular letrinhas, por favor digite apenas números ");
             }
         }
-
+        function atualizarHistorico(expression, result) {
+            var itemHistorico = expression + " = " + result;
+            itensHistorico.push(itemHistorico);
+            listaHistorico.innerHTML = itensHistorico.map(item => "<li>" + item + "</li>").join("");
+          }
     </script>
     <footer>
         <p>Desenvolvido por: Abranlincoln Gomes de brito</p>
