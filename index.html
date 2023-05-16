@@ -7,10 +7,12 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #7c7b7b;
         }
+
         .buttons button.calcular {
             background-color: #0011ff;
-            grid-column: 4;
+            grid-column: 1/5;
         }
+
         .history {
             background-color: #727272;
             padding: 10px;
@@ -128,12 +130,12 @@
             <button onclick="anexarInput('2')">2</button>
             <button onclick="anexarInput('3')">3</button>
             <button class="operador" onclick="anexarInput('*')">x</button>
-            
+
             <button class="limparInput" onclick="limparInput()">C</button>
             <button onclick="anexarInput('0')">0</button>
             <button onclick="anexarInput('.')">,</button>
             <button class="operador" onclick="anexarInput('/')">/</button>
-            <button class="calcular "onclick="calcular()">=</button>
+            <button class="calcular " onclick="calcular()">=</button>
         </div>
     </div>
 
@@ -150,6 +152,11 @@
         }
 
         function anexarInput(char) {
+            if (char === '0' && input.value === '') {
+                alert("O primeiro dígito não pode ser zero.");
+                return;
+            }
+        
             input.value += char;
         }
 
@@ -160,7 +167,10 @@
 
         function apenasNumeros(event) {
             var tecla = event.key;
-            if (isNaN(tecla) || tecla == " " || tecla == "*" || tecla == "/" || tecla == "-" || tecla == "+" || tecla == "." || tecla == "=") {
+            if (input.value === "" && tecla === "0") {
+                event.preventDefault();
+                alert("O primeiro dígito não pode ser zero.");
+            }else if (isNaN(tecla) || tecla == " ") {
                 event.preventDefault();
                 alert(" Ainda não aprendemos a calular letrinhas, por favor digite apenas números ");
             }
