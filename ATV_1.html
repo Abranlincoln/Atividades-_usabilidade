@@ -86,7 +86,7 @@
     <h1>Calculadora</h1>
     <div class="calculadora">
         <div class="display">
-            <input type="text" id="input">
+            <input type="text" id="input" onkeypress="apenasNumeros(event)">
         </div>
         <div class="buttons">
             <button class="operador" onclick="anexarInput('/')">÷</button>
@@ -99,17 +99,10 @@
     </div>
 
     <script>
-        function somenteNumeros(input) {
-            if (!/^[0-9]+$/.test(input.value)) {
-                alert("Digite apenas números!");
-                limparInput();
-            }
-        }
         var input = document.getElementById("input");
         var valores = [];
 
-        function calcular() {
-            somenteNumeros(input);
+        function calcular() {        
             var expressao = input.value;
             var resultado = eval(expressao);
             input.value = resultado;
@@ -122,6 +115,15 @@
         function limparInput() {
             input.value = "";
         }
+        function apenasNumeros(event) {
+            var tecla = event.key;
+            if (tecla == "." || tecla == ",") {
+              tecla = ".";
+            }
+            if (isNaN(tecla) || tecla == " ") {
+              event.preventDefault();
+            }
+          }
 
     </script>
     <footer>
