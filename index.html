@@ -7,7 +7,10 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #7c7b7b;
         }
-
+        .buttons button.calcular {
+            background-color: #0011ff;
+            grid-column: 4;
+        }
         .history {
             background-color: #727272;
             padding: 10px;
@@ -81,7 +84,7 @@
         }
 
         .buttons button.operador {
-            background-color: #00ff4c;
+            background-color: #1cb84b;
         }
 
         .buttons button:hover {
@@ -113,13 +116,24 @@
             <input type="text" id="input" onkeypress="apenasNumeros(event)">
         </div>
         <div class="buttons">
-            <button class="operador" onclick="anexarInput('/')">÷</button>
-            <button class="operador" onclick="anexarInput('*')">×</button>
-            <button class="operador" onclick="anexarInput('-')">−</button>
+            <button onclick="anexarInput('7')">7</button>
+            <button onclick="anexarInput('8')">8</button>
+            <button onclick="anexarInput('9')">9</button>
             <button class="operador" onclick="anexarInput('+')">+</button>
-            <button class="operador" onclick="anexarInput('.')">,</button>
+            <button onclick="anexarInput('4')">4</button>
+            <button onclick="anexarInput('5')">5</button>
+            <button onclick="anexarInput('6')">6</button>
+            <button class="operador" onclick="anexarInput('-')">-</button>
+            <button onclick="anexarInput('1')">1</button>
+            <button onclick="anexarInput('2')">2</button>
+            <button onclick="anexarInput('3')">3</button>
+            <button class="operador" onclick="anexarInput('*')">x</button>
+            
             <button class="limparInput" onclick="limparInput()">C</button>
-            <button onclick="calcular()">=</button>
+            <button onclick="anexarInput('0')">0</button>
+            <button onclick="anexarInput('.')">,</button>
+            <button class="operador" onclick="anexarInput('/')">/</button>
+            <button class="calcular "onclick="calcular()">=</button>
         </div>
     </div>
 
