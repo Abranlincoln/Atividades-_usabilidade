@@ -118,9 +118,6 @@
         
         function apenasNumeros(event) {
             var tecla = event.key;
-            if (tecla == "." || tecla == ",") {
-                tecla = ".";
-            }
             if (isNaN(tecla) || tecla == " ") {
                 event.preventDefault();
             }
