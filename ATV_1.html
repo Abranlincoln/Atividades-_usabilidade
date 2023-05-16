@@ -86,13 +86,14 @@
     <h1>Calculadora</h1>
     <div class="calculadora">
         <div class="display">
-            <input type="text" id="input" onkeypress="apenasNumeros(evento)">
+            <input type="text" id="input" onkeypress="apenasNumeros(event)">
         </div>
         <div class="buttons">
             <button class="operador" onclick="anexarInput('/')">÷</button>
             <button class="operador" onclick="anexarInput('*')">×</button>
             <button class="operador" onclick="anexarInput('-')">−</button>
             <button class="operador" onclick="anexarInput('+')">+</button>
+            <button class="operador" onclick="anexarInput('.')">,</button>
             <button class="limparInput" onclick="limparInput()">C</button>
             <button onclick="calcular()">=</button>
         </div>
@@ -102,7 +103,7 @@
         var input = document.getElementById("input");
         var valores = [];
 
-        function calcular() {        
+        function calcular() {
             var expressao = input.value;
             var resultado = eval(expressao);
             input.value = resultado;
@@ -115,15 +116,15 @@
         function limparInput() {
             input.value = "";
         }
-        function apenasNumeros(evento) {
-            var tecla = evento.key;
+        function apenasNumeros(event) {
+            var tecla = event.key;
             if (tecla == "." || tecla == ",") {
-              tecla = ".";
+                tecla = ".";
             }
             if (isNaN(tecla) || tecla == " ") {
-              evento.preventoDefault();
+                event.preventDefault();
             }
-          }
+        }
 
     </script>
     <footer>
