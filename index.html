@@ -9,7 +9,7 @@
         }
 
         .buttons button.calcular {
-            background-color: #0011ff;
+            background-color: #3740b4;
             grid-column: 1/5;
         }
 
@@ -130,7 +130,6 @@
             <button onclick="anexarInput('2')">2</button>
             <button onclick="anexarInput('3')">3</button>
             <button class="operador" onclick="anexarInput('*')">x</button>
-
             <button class="limparInput" onclick="limparInput()">C</button>
             <button onclick="anexarInput('0')">0</button>
             <button onclick="anexarInput('.')">,</button>
@@ -152,11 +151,11 @@
         }
 
         function anexarInput(char) {
-            if (char === '0' && input.value === '') {
-                alert("O primeiro dígito não pode ser zero.");
+            if (char === '0' && input.value === '0') {
+                alert("Quem utiliza 2 zeros seguidos?");
                 return;
             }
-        
+
             input.value += char;
         }
 
@@ -167,12 +166,12 @@
 
         function apenasNumeros(event) {
             var tecla = event.key;
-            if (input.value === "" && tecla === "0") {
+            if (input.value === "0" && tecla === "0") {
                 event.preventDefault();
-                alert("O primeiro dígito não pode ser zero.");
-            }else if (isNaN(tecla) || tecla == " ") {
+                alert("Quem utiliza 2 zeros seguidos?");
+            } else if (isNaN(tecla) || tecla == " ") {
                 event.preventDefault();
-                alert(" Ainda não aprendemos a calular letrinhas, por favor digite apenas números ");
+                alert(" Ainda não aprendemos a calcular letrinhas, por favor digite apenas números e operadores válidos!!! ");
             }
         }
         function atualizarHistorico(expression, result) {
